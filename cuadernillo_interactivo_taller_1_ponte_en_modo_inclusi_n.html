@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuadernillo Interactivo - Taller 1: Ponte en Modo Inclusión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; color: #1f2937; }
+        .bg-primary { background-color: #142B4A; }
+        .text-primary { color: #142B4A; }
+        .border-primary { border-color: #142B4A; }
+        .bg-accent { background-color: #7A1F3D; }
+        .text-accent { color: #7A1F3D; }
+        .border-accent { border-color: #7A1F3D; }
+        
+        @media print {
+            body { background-color: white; }
+            .no-print { display: none !important; }
+            .page-break { page-break-after: always; break-after: page; }
+            textarea { border: 1px solid #94a3b8 !important; background: white !important; }
+        }
+    </style>
+</head>
+<body class="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+
+    <!-- Barra de Herramientas Superior (No se imprime) -->
+    <header class="max-w-4xl mx-auto mb-6 flex flex-wrap justify-between items-center bg-white p-4 rounded-xl shadow-md border border-slate-200 no-print">
+        <div>
+            <h1 class="text-lg font-bold text-primary">Fundación Proyecto Unión</h1>
+            <p class="text-xs text-slate-500">Centro de Vida & Hogar Santa Rita de Cascia</p>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-2 sm:mt-0">
+            <button onclick="saveToLocalStorage()" class="px-4 py-2 bg-emerald-600 text-white font-medium text-sm rounded-lg hover:bg-emerald-700 transition shadow-sm flex items-center gap-1.5">
+                💾 Guardar Progreso
+            </button>
+            <button onclick="clearLocalStorage()" class="px-4 py-2 bg-slate-200 text-slate-700 font-medium text-sm rounded-lg hover:bg-slate-300 transition flex items-center gap-1.5">
+                🧹 Limpiar Todo
+            </button>
+            <button onclick="window.print()" class="px-4 py-2 bg-accent text-white font-medium text-sm rounded-lg hover:opacity-90 transition shadow-sm flex items-center gap-1.5">
+                🖨️ Imprimir / Guardar PDF
+            </button>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto space-y-8">
+
+        <!-- PORTADA INSTITUCIONAL -->
+        <section class="bg-white rounded-2xl shadow-lg border border-slate-200 p-8 sm:p-12 page-break relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-3 bg-primary"></div>
+            <div class="flex flex-col items-center text-center space-y-6 my-6">
+                <div class="inline-block bg-slate-100 border border-slate-200 px-4 py-1.5 rounded-full text-xs font-semibold text-accent tracking-wide uppercase">
+                    Licenciatura en Educación Infantil · 2026
+                </div>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">
+                    TALLER 1: PONTE EN MODO INCLUSIÓN
+                </h1>
+                <p class="text-xl font-medium text-accent">
+                    Descubrir barreras para transformar la experiencia educativa
+                </p>
+                <p class="text-slate-600 max-w-2xl text-sm sm:text-base leading-relaxed">
+                    Un laboratorio pedagógico para aprender haciendo, reconocer cómo las barreras del entorno, las instrucciones y los materiales pueden dificultar la participación, y proponer alternativas pedagógicas más inclusivas.
+                </p>
+            </div>
+
+            <div class="mt-10 pt-6 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-primary uppercase mb-1">Nombre(s) del Docente o Equipo:</label>
+                    <input type="text" id="doc_nombre" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#142B4A] focus:outline-none" placeholder="Escribe aquí tu nombre...">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-primary uppercase mb-1">Centro o Institución / Nivel:</label>
+                    <input type="text" id="doc_institucion" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#142B4A] focus:outline-none" placeholder="Ej. Santa Rita de Cascia...">
+                </div>
+            </div>
+            <div class="mt-4 text-center text-xs text-slate-400">
+                Fundación Proyecto Unión · Un lugar donde la vida recobra la esperanza
+            </div>
+        </section>
+
+        <!-- RUTINA DE PENSAMIENTO -->
+        <section class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 sm:p-10 page-break">
+            <div class="border-b-2 border-primary pb-4 mb-6 flex justify-between items-end">
+                <div>
+                    <span class="text-xs font-bold text-accent uppercase tracking-wider">Herramienta de Análisis</span>
+                    <h2 class="text-2xl font-bold text-primary">Rutina de Pensamiento</h2>
+                </div>
+                <span class="text-xs font-semibold bg-slate-100 text-slate-600 px-3 py-1 rounded-full">Página 2</span>
+            </div>
+
+            <p class="text-sm text-slate-600 mb-6">Utiliza esta rutina para examinar situaciones educativas cotidianas sin buscar culpables, enfocándote en las posibilidades de transformación.</p>
+
+            <div class="space-y-6">
+                <div class="bg-slate-50 border-l-4 border-primary p-5 rounded-r-xl">
+                    <h3 class="font-bold text-primary text-base mb-1">1. OBSERVAR</h3>
+                    <p class="text-xs text-slate-500 mb-3">¿Qué está dificultando la participación? Describe hechos concretos, sin interpretar todavía.</p>
+                    <textarea id="rutina_observar" rows="3" class="w-full p-3 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#142B4A] focus:outline-none" placeholder="Describe exactamente lo observable..."></textarea>
+                </div>
+
+                <div class="bg-slate-50 border-l-4 border-accent p-5 rounded-r-xl">
+                    <h3 class="font-bold text-accent text-base mb-1">2. PREGUNTAR</h3>
+                    <p class="text-xs text-slate-500 mb-3">¿Qué información nos falta para comprender la situación en profundidad?</p>
+                    <textarea id="rutina_preguntar" rows="3" class="w-full p-3 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#7A1F3D] focus:outline-none" placeholder="Anota tus preguntas clave..."></textarea>
+                </div>
+
+                <div class="bg-slate-50 border-l-4 border-emerald-700 p-5 rounded-r-xl">
+                    <h3 class="font-bold text-emerald-800 text-base mb-1">3. TRANSFORMAR</h3>
+                    <p class="text-xs text-slate-500 mb-3">¿Qué podemos cambiar en la actividad, el espacio o el entorno?</p>
+                    <textarea id="rutina_transformar" rows="3" class="w-full p-3 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-emerald-700 focus:outline-none" placeholder="Propón modificaciones posibles..."></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- PREGUNTA RETADORA -->
+        <section class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 sm:p-10 page-break">
+            <div class="border-b-2 border-primary pb-4 mb-6 flex justify-between items-end">
+                <div>
+                    <span class="text-xs font-bold text-accent uppercase tracking-wider">Activación Inicial</span>
+                    <h2 class="text-2xl font-bold text-primary">Pregunta Retadora</h2>
+                </div>
+                <span class="text-xs font-semibold bg-slate-100 text-slate-600 px-3 py-1 rounded-full">Página 3</span>
+            </div>
+
+            <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl mb-6">
+                <p class="text-sm font-semibold text-amber-900">Regla de oro: Describir antes de interpretar.</p>
+                <p class="text-xs text-amber-700 mt-1">Piensa en una actividad reciente que no salió como esperabas en tu práctica pedagógica.</p>
+            </div>
+
+            <div class="space-y-5">
+                <div>
+                    <label class="block text-sm font-bold text-primary mb-1">¿Qué pasó? (Describe lo observable, sin interpretaciones)</label>
+                    <textarea id="reto_que_paso" rows="3" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#142B4A] focus:outline-none" placeholder="Detalla los hechos ocurridos..."></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-primary mb-1">¿Qué pudo influir? (Instrucciones, espacio, materiales, tiempo o dinámica)</label>
+                    <textarea id="reto_que_influyo" rows="3" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#142B4A] focus:outline-none" placeholder="Analiza los factores contextuales..."></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-primary mb-1">¿Qué cambiarías? (Imagina una modificación pequeña, posible y respetuosa)</label>
+                    <textarea id="reto_que_cambiarias" rows="3" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#142B4A] focus:outline-none" placeholder="Describe tu propuesta de ajuste..."></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCIA 1: RETO DE INSTRUCCIONES -->
+        <section class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 sm:p-10 page-break">
+            <div class="border-b-2 border-primary pb-4 mb-6 flex justify-between items-end">
+                <div>
+                    <span class="text-xs font-bold text-accent uppercase tracking-wider">Laboratorio Práctico</span>
+                    <h2 class="text-2xl font-bold text-primary">Experiencia 1: El Reto de las Instrucciones</h2>
+                </div>
+                <span class="text-xs font-semibold bg-slate-100 text-slate-600 px-3 py-1 rounded-full">Página 4</span>
+            </div>
+
+            <p class="text-sm text-slate-600 mb-6">Después de resolver el reto de construcción con tu equipo y recibir instrucciones diferenciadas, reflexiona:</p>
+
+            <div class="space-y-5">
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                    <label class="block text-sm font-bold text-primary mb-1">1. ¿Qué sentiste?</label>
+                    <p class="text-xs text-slate-500 mb-2">Confusión, seguridad, frustración, interés, reto…</p>
+                    <textarea id="exp1_sentiste" rows="2" class="w-full p-3 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#142B4A] focus:outline-none" placeholder="Escribe tus emociones y vivencias durante la actividad..."></textarea>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                    <label class="block text-sm font-bold text-primary mb-1">2. ¿Qué barrera encontraste?</label>
+                    <p class="text-xs text-slate-500 mb-2">Instrucciones, tiempo, materiales, ruido o falta de información.</p>
+                    <textarea id="exp1_barrera" rows="2" class="w-full p-3 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#142B4A] focus:outline-none" placeholder="Identifica las barreras principales experimentadas..."></textarea>
+                </div>
+
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                    <label class="block text-sm font-bold text-primary mb-1">3. ¿Qué te habría ayudado?</label>
+                    <p class="text-xs text-slate-500 mb-2">Un ejemplo, una imagen, pasos cortos, más tiempo o una demostración.</p>
+                    <textarea id="exp1_ayudado" rows="2" class="w-full p-3 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#142B4A] focus:outline-none" placeholder="Describe los apoyos que facilitaron la tarea..."></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- FÁBRICA DE SOLUCIONES / DETECTIVES DE BARRERAS -->
+        <section class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 sm:p-10 page-break">
+            <div class="border-b-2 border-primary pb-4 mb-6 flex justify-between items-end">
+                <div>
+                    <span class="text-xs font-bold text-accent uppercase tracking-wider">Análisis y Diseño</span>
+                    <h2 class="text-2xl font-bold text-primary">Experiencia 2 & 3: Fábrica de Soluciones</h2>
+                </div>
+                <span class="text-xs font-semibold bg-slate-100 text-slate-600 px-3 py-1 rounded-full">Página 5</span>
+            </div>
+
+            <p class="text-sm text-slate-600 mb-6">Elige uno de los casos del taller (Caso A - Samuel, Caso B - Lucía o Caso C - Mateo) y completa la ficha de análisis y diseño:</p>
+
+            <div class="space-y-5">
+                <div>
+                    <label class="block text-sm font-bold text-primary mb-1">Caso seleccionado y descripción del hecho observado:</label>
+                    <textarea id="fabrica_caso" rows="2" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#142B4A] focus:outline-none" placeholder="¿Qué caso analizas y qué observas concretamente?..."></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-primary mb-1">¿Qué barreras del entorno o la actividad influyen?</label>
+                    <textarea id="fabrica_barreras" rows="2" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#142B4A] focus:outline-none" placeholder="Instrucciones extensas, ruido, falta de anticipación..."></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-primary mb-1">Alternativa pedagógica diseñada (Paso a paso y materiales):</label>
+                    <textarea id="fabrica_solucion" rows="4" class="w-full p-3 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#142B4A] focus:outline-none" placeholder="Describe la solución rápida creada (secuencia visual, tarjeta de pasos, ajuste de espacio)..."></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALERÍA DE SOLUCIONES Y CIERRE -->
+        <section class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 sm:p-10 page-break">
+            <div class="border-b-2 border-primary pb-4 mb-6 flex justify-between items-end">
+                <div>
+                    <span class="text-xs font-bold text-accent uppercase tracking-wider">Coevaluación y Cierre</span>
+                    <h2 class="text-2xl font-bold text-primary">Galería de Soluciones y Cierre</h2>
+                </div>
+                <span class="text-xs font-semibold bg-slate-100 text-slate-600 px-3 py-1 rounded-full">Página 6</span>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                    <h3 class="font-bold text-primary text-sm mb-2">Observaciones y coevaluación de otras propuestas:</h3>
+                    <p class="text-xs text-slate-500 mb-3">¿Se entiende? ¿Permite participar? ¿Qué ajustarías para hacerla más accesible?</p>
+                    <textarea id="cierre_coevaluacion" rows="3" class="w-full p-3 bg-white border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#142B4A] focus:outline-none" placeholder="Anota las ideas constructivas recibidas..."></textarea>
+                </div>
+
+                <div class="bg-[#fdf2f4] border-2 border-accent p-6 rounded-xl text-center space-y-4">
+                    <div class="inline-block bg-accent text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        Tarjeta de Salida
+                    </div>
+                    <h3 class="font-bold text-primary text-lg">Completa tu compromiso individual:</h3>
+                    <p class="text-sm font-medium text-slate-700 italic">« En mi práctica pedagógica puedo facilitar la participación si... »</p>
+                    <textarea id="cierre_compromiso" rows="3" class="w-full p-4 bg-white border border-accent rounded-lg text-sm focus:ring-2 focus:ring-[#7A1F3D] focus:outline-none text-left" placeholder="Escribe tu compromiso personal para transformar la práctica cotidiana..."></textarea>
+                </div>
+            </div>
+
+            <!-- Botones inferiores de acción -->
+            <div class="mt-8 pt-6 border-t border-slate-200 flex flex-wrap justify-center gap-4 no-print">
+                <button onclick="saveToLocalStorage()" class="px-6 py-3 bg-emerald-600 text-white font-semibold rounded-xl hover:bg-emerald-700 transition shadow">
+                    💾 Guardar Progreso
+                </button>
+                <button onclick="window.print()" class="px-6 py-3 bg-accent text-white font-semibold rounded-xl hover:opacity-90 transition shadow">
+                    🖨️ Imprimir / Exportar a PDF
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-4xl mx-auto mt-8 text-center text-xs text-slate-500 no-print pb-8">
+        Fundación Proyecto Unión · Taller 1: Ponte en Modo Inclusión · Todos los derechos reservados
+    </footer>
+
+    <!-- Script de persistencia local y alertas -->
+    <script>
+        const fields = [
+            'doc_nombre', 'doc_institucion',
+            'rutina_observar', 'rutina_preguntar', 'rutina_transformar',
+            'reto_que_paso', 'reto_que_influyo', 'reto_que_cambiarias',
+            'exp1_sentiste', 'exp1_barrera', 'exp1_ayudado',
+            'fabrica_caso', 'fabrica_barreras', 'fabrica_solucion',
+            'cierre_coevaluacion', 'cierre_compromiso'
+        ];
+
+        // Guardar en localStorage
+        function saveToLocalStorage() {
+            fields.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    localStorage.setItem('taller1_' + id, el.value);
+                }
+            });
+            alertCustom('¡Progreso guardado exitosamente en tu navegador!');
+        }
+
+        // Cargar de localStorage al iniciar
+        function loadFromLocalStorage() {
+            fields.forEach(id => {
+                const saved = localStorage.getItem('taller1_' + id);
+                if (saved !== null) {
+                    const el = document.getElementById(id);
+                    if (el) el.value = saved;
+                }
+            });
+        }
+
+        // Limpiar localStorage y campos
+        function clearLocalStorage() {
+            if (confirm('¿Estás seguro de limpiar todas tus respuestas guardadas?')) {
+                fields.forEach(id => {
+                    localStorage.removeItem('taller1_' + id);
+                    const el = document.getElementById(id);
+                    if (el) el.value = '';
+                });
+                alertCustom('Cuadernillo reiniciado limpiamente.');
+            }
+        }
+
+        // Alerta amigable sin usar alert() nativo restrictivo
+        function alertCustom(message) {
+            const div = document.createElement('div');
+            div.className = 'fixed bottom-5 right-5 bg-slate-900 text-white px-6 py-3 rounded-xl shadow-2xl z-50 transition-all duration-300 text-sm font-medium flex items-center gap-2';
+            div.innerHTML = `✅ <span>${message}</span>`;
+            document.body.appendChild(div);
+            setTimeout(() => {
+                div.style.opacity = '0';
+                setTimeout(() => div.remove(), 300);
+            }, 3000);
+        }
+
+        // Cargar datos al cargar la página
+        window.onload = loadFromLocalStorage;
+    </script>
+</body>
+</html>
